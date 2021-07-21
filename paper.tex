@@ -87,8 +87,9 @@
 
 	% certificate page
 	\section[certificate]{\hfill \Huge Certificate \hfill}
-	\thispagestyle{empty}
+	%\thispagestyle{empty}
 
+	% roman page numbering
 	\pagenumbering{roman}
 
 	\begin{center}
@@ -160,7 +161,56 @@
 
 	\tableofcontents
 
-	\section[abstract]{\hfill \Huge Abstract \hfill}
+	% abstract
+	\section[abstract]{}
 
-	This is going to be fun.
+	% reverting back to normal page numbering
+	\pagenumbering{arabic}
+
+	\thispagestyle{plain}
+	\begin{center}
+		\Large
+		\textbf{Brain Tumor Detection}
+
+		\vspace{0.4cm}
+		\large
+		Using various machine learning models to detect brain tumor.
+
+		\vspace{0.4cm}
+		\textbf{Authors}:
+
+		$\bullet$ Shoptorshi \space\space
+		$\bullet$ Brahmajit \space\space
+		$\bullet$ Rajarshi \space\space
+		$\bullet$ Bhargav
+
+		\vspace{0.9cm}
+		\textbf{Abstract}
+	\end{center}
+
+	Tumors are cancerous or non-cancerous mass or growth of abnormal cells in
+	brain. Tumors can start in brain, or cancer elsewhere in the body can spread
+	to brain. There are many way to control the occurrence of these abnormal
+	cells. A tumor can be denoted as a malformed mass of tissues wherein the
+	cells multiply abruptly and ceaselessly, that is there is no control over
+	the growth of the cells.
+
+	The process of Image segmentation is adopted for extracting abnormal tumor
+	region within the brain. In the MRI (magnetic resonance image), segmentation
+	of brain tissue holds very significant in order to identify the presence of
+	outlines concerning the brain tumor. There is abundance of hidden
+	information in stored in the Health care sector. With appropriate use of
+	accurate data mining classification techniques, early prediction of any
+	disease can be effectively performed.
+
+	The project examines list of risk factors that are being traced out in brain
+	tumor surveillance systems. Also the method proposed assures to be highly
+	efficient and precise for brain tumor detection, classification and
+	segmentation. To achieve this precise automatic or semi-automatic methods
+	are needed. The project proposes an automatic segmentation method that
+	relies upon CNN (Convolution Neural Networks), VGG 16 and Resent 50,
+	determining small 7 x 7 kernels. By incorporating this single technique,
+	segmentation and classification is accomplished. CNN (a ML technique) from
+	NN (Neural Networks)wherein it has layer based for results classification.
+
 \end{document}
