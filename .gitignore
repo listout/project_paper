@@ -6,3 +6,7 @@
 *.out
 *.xdv
 *.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.xml
