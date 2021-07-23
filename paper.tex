@@ -3,6 +3,10 @@
 % font
 \usepackage{tgschola}
 
+% sub figure
+\usepackage{caption}
+\usepackage{subcaption}
+
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -362,7 +366,31 @@
 	technique is used for resolution enhancement. The Peak Signal to Noise Ratio
 	(PSNR) is used for evaluation of these techniques.
 
+	\section[methodology]{\hfill \Huge Methodology \hfill}
+
+	As per literature survey, it was found that automated  brain  tumor
+	detection  is  very  necessary  as  high accuracy is needed when human life
+	is involved.  Automated detection of tumor in MR images involves feature
+	extraction and  classification  using  machine  learning  algorithm.  In
+	this paper, a system to automatically detect tumor in MR images is proposed
+	as shown in Figure~\ref{Proposed Methodology}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{imgs/methodology}
+		\caption{Proposed Methodology}%
+		\label{Proposed Methodology}
+	\end{figure}
+
+	\textbf{ Image Acquisition: } The MRI brain images are acquired and are given as input
+	to pre-processing stage. The sample brain MR images are shown in figure 2.
+
+	%\textbf{ Preprocessing: } Preprocessing is needed as it provides improvement  in  image
+	%data  which    enhances  some  of  the  image  features  which  are
+	%important  for  further  processing.  The    pre-processing  steps  that
+	%are  applied  to  MR  image  are as follows :
+
 	\emergencystretch=1em
-	\printbibliography[title={\hfill \Huge References \hfill}]
+	\printbibliography[heading=bibintoc,title={References}]
 
 \end{document}
