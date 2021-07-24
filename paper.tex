@@ -858,7 +858,68 @@
 	prediction batch.
 
 	Next three machine learning models are created. A \textbf{CNN} or a
-	convolutional neural network, \textbf{VGG 16} and \textbf{Resnet 50}.
+	convolutional neural network, \textbf{VGG 16} and \textbf{Resnet 50}. The
+	models are implemented in both fast.ai and tensorflow, to be compared later.
+
+	While training the images are resized to $(150 \times 150)$ and augmented at
+	runtime, thus removing bias as much as possible. Since there are only two
+	possible classes (yes and no), a binary class is sufficient; dividing the
+	images into training and testing (validation set) in $80:20$ ratio. Giving
+	us $2603 \ \textnormal{and} \ 650$ images for the \textit{yes} and
+	\textit{no} classes, respectively.
+
+	After training is complete the models are then evaluated (further discussed
+	in Section~\ref{sec:result} )
+
+	\section{Result}%
+	\label{sec:result}
+
+	The evaluated models are plotted on graph for better understanding of data.
+
+	\begin{figure}[H]
+		\centering
+		\subfloat[vgg16 using tensorflow]
+		{\includegraphics[width=0.4\linewidth]
+		{imgs/tf_vgg16.png}\label{tf_vgg16}}
+		\hspace{0.5cm}
+		\subfloat[vgg16 using fast.ai]
+		{\includegraphics[width=0.5\linewidth]
+		{imgs/fastai_vgg16.png}\label{fastai_vgg16}}
+		\caption{VGG16 implemented in fast.ai and tensorflow}
+		\label{VGG16 in fast.ai and tensorflow}
+	\end{figure}
+
+
+	\begin{figure}[H]
+		\centering
+		\subfloat[resnet50 using tensorflow]
+		{\includegraphics[width=0.4\linewidth]
+		{imgs/tf_resnet.png}\label{tf_resnet}}
+		\hspace{0.5cm}
+		\subfloat[resnet50 using fast.ai]
+		{\includegraphics[width=0.5\linewidth]
+		{imgs/fastai_resnet.png}\label{fastai_resnet}}
+		\caption{Resnet 50 implemented in fast.ai and tensorflow}
+		\label{ResNet 50 in fast.ai and tensorflow}
+	\end{figure}
+
+	We have achieved around 96\% and 98\% accuracy for for the VGG16 and ResNet,
+	respectively; using \textit{tensorflow}, and 97\% (98\% after unfreezing)
+	and 97\% (99\% after unfreezing) using \textit{fast.ai}. While using CNN
+	accuracy was almost same when implemented by the both the libraries.
+
+	There are lot of room for improvement but due to time and hardware
+	constrains we were able to only implement till such.
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=\linewidth]{imgs/result.png}
+		\caption{Predictions made by the VGG16 model in tensorflow on random data}%
+		\label{fig:result}
+	\end{figure}
+
+	As it can be seen from Figure~\ref{fig:result} there are some false
+	positives in our predictions.
 
 	\emergencystretch=1em
 	\printbibliography[heading=bibintoc,title={References}]
