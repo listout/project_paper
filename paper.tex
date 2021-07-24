@@ -1,5 +1,9 @@
 \documentclass[11pt]{article}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
 % font
 \usepackage{tgschola}
 \usepackage{amsmath}
@@ -7,9 +11,6 @@
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{float}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
 \usepackage{multicol}
 \usepackage[ddmmyyyy]{datetime}
 \usepackage[a4paper, margin=2cm]{geometry}
@@ -30,10 +31,11 @@
 }
 
 % bibliography
+\usepackage{url}
 \usepackage[
-	%backend=biber,
+	backend=biber,
 	style=numeric,
-	citestyle=ieee
+	%citestyle=ieee
 ]{biblatex}
 \usepackage{csquotes}
 
@@ -512,7 +514,7 @@
 	classification of MR brain image either as normal or abnormal.  The major
 	aim of ML algorithms is to automatically learn and make intelligent
 	decisions. The feature set formed by above specified method was applied to
-	Multi-Layer Perceptron (MLP) and Naive Bayes for classification.  MLP [3] is
+	Multi-Layer Perceptron (MLP) and Naive Bayes for classification.  MLP is
 	a feed forward artificial neural network model that maps sets of input data
 	into a set of appropriate output. It is known as feed forward because it
 	does not contain any cycles and network output depends only on the current
@@ -534,6 +536,189 @@
 	estimation. This method requires only a small amount of training data to
 	estimate the parameters which are needed for classification. The time taken
 	for training and classification is less.
+
+	For classification three models are used; \textbf{CNN}, \textbf{VGG 16} and
+	\textbf{Resnet 50}.
+
+	\subsection{Convolutional Neural Network}%
+	\label{sub:Convolutional Neural Network}
+
+	CNN or Convolutional Neural Network a class of artificial neural network,
+	most commonly applied to analyze visual imagery.They are also known as
+	shift invariant or space invariant artificial neural networks (SIANN), based
+	on the shared-weight architecture of the convolution kernels or filters that
+	slide along input features and provide translation equivariant responses
+	known as feature maps. Counter-intuitively, most convolutional neural
+	networks are only equivariant, as opposed to invariant, to translation.
+	They have applications in image and video recognition, recommender
+	systems, image classification, image segmentation, medical image
+	analysis, natural language processing, brain-computer interfaces, and
+	financial time series.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/cnn_arch.png}
+		\caption{CNN architecture}%
+		\label{CNN Architecture}
+	\end{figure}
+
+	\subsubsection{Architecture}
+
+	A convolutional neural network consists of an input layer, hidden layers and
+	an output layer. In any feed-forward neural network, any middle layers are
+	called hidden because their inputs and outputs are masked by the activation
+	function and final convolution. In a convolutional neural network, the
+	hidden layers include layers that perform convolutions. Typically this
+	includes a layer that performs a dot product of the convolution kernel with
+	the layer's input matrix.  This product is usually the Frobenius inner
+	product, and its activation function is commonly ReLU. As the convolution
+	kernel slides along the input matrix for the layer, the convolution
+	operation generates a feature map, which in turn contributes to the input of
+	the next layer. This is followed by other layers such as pooling layers,
+	fully connected layers, and normalization layers \cite{covnet_arch}.
+
+	\textbf{Convolutional Layer}:
+	In a CNN, the input is a tensor with a shape: (number of inputs) x (input
+	height) x (input width) x (input channels). After passing through a
+	convolutional layer, the image becomes abstracted to a feature map, also
+	called an activation map, with shape: (number of inputs) x (feature map
+	height) x (feature map width) x (feature map channels). A convolutional
+	layer within a CNN generally has the following attributes:
+
+	\begin{itemize}
+		\item Convolutional filters/kernels defined by a width and height (hyper-parameters).
+		\item The number of input channels and output channels
+			(hyper-parameters). One layer's input channels must equal the number
+			of output channels (also called depth) of its input.
+		\item Additional hyperparameters of the convolution operation, such as:
+			padding, stride, and dilation.
+	\end{itemize}
+
+	Convolutional layers convolve the input and pass its result to the next
+	layer. This is similar to the response of a neuron in the visual cortex to a
+	specific stimulus.
+
+	\textbf{Pooling Layer}:
+	Convolutional networks may include local and/or global pooling layers along
+	with traditional convolutional layers. Pooling layers reduce the dimensions
+	of data by combining the outputs of neuron clusters at one layer into a
+	single neuron in the next layer. Local pooling combines small clusters,
+	tiling sizes such as 2 x 2 are commonly used. Global pooling acts on all the
+	neurons of the feature map. There are two common types of pooling in popular
+	use: max and average. Max pooling uses the maximum value of each local
+	cluster of neurons in the feature map, while average pooling takes the
+	average value.
+
+	\textbf{ReLU Layer}:
+
+	ReLU is the abbreviation of rectified linear unit, which applies the
+	non-saturating activation function
+	\begin{equation}
+		f ( x ) = \max ( 0 , x )
+	\end{equation}
+
+	.It effectively removes
+	negative values from an activation map by setting them to zero. It
+	introduces nonlinearities to the decision function and in the overall
+	network without affecting the receptive fields of the convolution layers.
+
+	Other functions can also be used to increase nonlinearity, for example the
+	saturating hyperbolic tangent
+	\begin{equation}
+	f(x)=\tanh(x)
+	f(x) = | \tanh (x) |
+	\end{equation}
+	and the
+	sigmoid function
+
+	\begin{equation}
+		\sigma(x) = (1+e^{-x})^{-1}
+	\end{equation}
+
+	ReLU is often preferred to other functions because it trains the neural network several
+	times faster without a significant penalty to generalization accuracy
+	 \cite{relu_layer}.
+
+	\textbf{Fully Connected Layer}
+
+	After several convolutional and max pooling layers, the final classification
+	is done via fully connected layers. Neurons in a fully connected layer have
+	connections to all activations in the previous layer, as seen in regular
+	(non-convolutional) artificial neural networks. Their activations can thus
+	be computed as an affine transformation, with matrix multiplication followed
+	by a bias offset (vector addition of a learned or fixed bias term).
+
+	\textbf{Loss Layer}
+
+	The "loss layer", or "loss function", specifies how training penalizes the
+	deviation between the predicted output of the network, and the true data
+	labels (during supervised learning). Various loss functions can be used,
+	depending on the specific task.
+
+	The Softmax loss function is used for predicting a single class of K
+	mutually exclusive classes. Sigmoid cross-entropy loss is used for
+	predicting K independent probability values is $[0, 1]$.  Euclidean loss is
+	used for regressing to real-valued labels $(- \infty, \infty)$.
+
+	\textbf{Receptive field}
+
+	In neural networks, each neuron receives input from some number of locations
+	in the previous layer. In a convolutional layer, each neuron receives input
+	from only a restricted area of the previous layer called the neuron's
+	receptive field. Typically the area is a square (e.g. 5 by 5 neurons).
+	Whereas, in a fully connected layer, the receptive field is the entire
+	previous layer. Thus, in each convolutional layer, each neuron takes input
+	from a larger area in the input than previous layers. This is due to
+	applying the convolution over and over, which takes into account the value
+	of a pixel, as well as its surrounding pixels. When using dilated layers,
+	the number of pixels in the receptive field remains constant, but the field
+	is more sparsely populated as its dimensions grow when combining the effect
+	of several layers.
+
+	\textbf{Weights}
+
+	Each neuron in a neural network computes an output value by applying a
+	specific function to the input values received from the receptive field in
+	the previous layer. The function that is applied to the input values is
+	determined by a vector of weights and a bias (typically real numbers).
+	Learning consists of iteratively adjusting these biases and weights.
+
+	The vector of weights and the bias are called filters and represent
+	particular features of the input (e.g., a particular shape). A
+	distinguishing feature of CNNs is that many neurons can share the same
+	filter. This reduces the memory footprint because a single bias and a single
+	vector of weights are used across all receptive fields that share that
+	filter, as opposed to each receptive field having its own bias and vector
+	weighting.
+
+	%\subsection{VGG 16}
+
+	\section[implementation]{\hfill \Huge Implementation \hfill}
+
+	\subsection{Assumptions and Dependencies}%
+	\label{sub:Assumptions and Dependencies}
+	It is assumed that the MRI scans are collected and processed before feeding
+	into the module.
+
+	The program is dependent on external modules and are expected to be
+	pre-installed on the system. The modules namely include:
+
+	\begin{itemize}
+		\item \href{https://www.fast.ai/}{fast.ai}
+		\item \href{https://www.tensorflow.org/}{tensorflow}
+		\item \href{https://opencv.org/}{OpenCV}
+		\item \href{https://matplotlib.org/}{matplotlib}
+	\end{itemize}
+
+	\subsection{Implementation Methods}%
+	\label{sub:Implementation Methods}
+	After acquiring the data, the data is classified into two classes (binary
+	class) of yes, consisting of tumorous cell and no, not consisting tumorous
+	cells. A second batch of images is kept separate for prediction, the
+	prediction batch.
+
+	Next three machine learning models are created. A \textbf{CNN} or a
+	convolutional neural network, \textbf{VGG 16} and \textbf{Resnet 50}.
 
 	\emergencystretch=1em
 	\printbibliography[heading=bibintoc,title={References}]
