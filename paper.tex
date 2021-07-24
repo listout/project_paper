@@ -18,7 +18,7 @@
 % sections on new page
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
-\setcounter{secnumdepth}{0}
+%\setcounter{secnumdepth}{0}
 
 % index and clickable toc
 \usepackage{hyperref}
@@ -103,7 +103,7 @@
 	\end{titlepage}
 
 	% certificate page
-	\section[certificate]{\hfill \Huge Certificate \hfill}
+	\section*{\hfill \Huge Certificate \hfill}
 	%\thispagestyle{empty}
 
 	% roman page numbering
@@ -161,7 +161,7 @@
 
 	\end{multicols}
 
-	\section[acknowledgement]{\hfill \Huge Acknowledgement \hfill}
+	\section*{Acknowledgement}
 	\label{sec:Acknowledgement}
 
 	\vspace{1cm}
@@ -184,7 +184,7 @@
 	\tableofcontents
 
 	% abstract
-	\section[abstract]{}
+	\section[abstract]{Abstract}
 
 	% reverting back to normal page numbering
 	\pagenumbering{arabic}
@@ -197,9 +197,6 @@
 		\vspace{0.4cm}
 		\large
 		Using various machine learning models to detect brain tumor.
-
-		\vspace{0.5cm}
-		\textbf{Abstract}
 	\end{center}
 
 	Tumors are cancerous or non-cancerous mass or growth of abnormal cells in
@@ -243,7 +240,7 @@
 			for brain tumor detection and prevention at an early stage.}
 	\end{enumerate}
 
-	\section[introduction]{\hfill \Huge Introduction \hfill}
+	\section[introduction]{Introduction}
 	\subsection[domain description]{Domain Description}
 
 	\begin{enumerate}
@@ -333,7 +330,7 @@
 		\item Report back to supervisor every once a week.
 	\end{itemize}
 
-	\section[background]{\hfill \Huge Background \hfill}
+	\section[background]{Background}
 
 	Natarajan \cite{bac1} proposed brain tumor detection method for MRI brain
 	images. The MRI brain images are first preprocessed using median filter,
@@ -367,7 +364,7 @@
 	technique is used for resolution enhancement. The Peak Signal to Noise Ratio
 	(PSNR) is used for evaluation of these techniques.
 
-	\section[methodology]{\hfill \Huge Methodology \hfill}
+	\section[methodology]{Methodology}
 
 	As per literature survey, it was found that automated  brain  tumor
 	detection  is  very  necessary  as  high accuracy is needed when human life
@@ -691,9 +688,74 @@
 	filter, as opposed to each receptive field having its own bias and vector
 	weighting.
 
-	%\subsection{VGG 16}
+	\subsection{VGG 16}
 
-	\section[implementation]{\hfill \Huge Implementation \hfill}
+	VGG 16 is is a significantly more accurate ConvNet architecture, which not
+	only achieve state-of-the-art accuracy on ILSVRC classification and
+	localisation tasks, but are also applicable to other image recognition
+	datasets, where they achieve excellent performance even when used as a part
+	of a relatively simple pipelines (e.g. deep features classified by a linear
+	SVM without fine-tuning).
+
+	\subsubsection{Architecture}
+	\label{sssec:vgg arch}
+
+	During training, the input to our ConvNets is a fixed-size 224 × 224 RGB
+	image. The only pre- processing we do is subtracting the mean RGB value,
+	computed on the training set, from each pixel.  The image is passed through
+	a stack of convolutional (conv.) layers, where we use filters with a very
+	small receptive field: 3 × 3 (which is the smallest size to capture the
+	notion of left/right, up/down, center). In one of the configurations we also
+	utilise 1 × 1 convolution filters, which can be seen as a linear
+	transformation of the input channels (followed by non-linearity). The
+	convolution stride is fixed to 1 pixel; the spatial padding of conv. layer
+	input is such that the spatial resolution is preserved after convolution,
+	i.e. the padding is 1 pixel for 3 × 3 conv. layers. Spatial pooling is
+	carried out by five max-pooling layers, which follow some of the conv.
+	layers (not all the conv. layers are followed by max-pooling). Max-pooling
+	is performed over a 2 × 2 pixel window, with stride 2.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{imgs/vgg16_arch.png}
+		\caption{VGG Architecture}%
+		\label{fig:vgg_arch}
+	\end{figure}
+
+	A stack of convolutional layers (which has a different depth in different
+	architectures) is followed by three Fully-Connected (FC) layers: the first
+	two have 4096 channels each, the third performs 1000- way ILSVRC
+	classification and thus contains 1000 channels (one for each class). The
+	final layer is the soft-max layer. The configuration of the fully connected
+	layers is the same in all networks.
+
+	All hidden layers are equipped with the rectification (ReLU) non-linearity.
+	We note that none of our networks (except for one) contain Local Response
+	Normalisation (LRN) normalisation: as will be shown in Sect. 4, such
+	normalisation does not improve the performance on the ILSVRC dataset, but
+	leads to increased memory con- sumption and computation time. Where
+	applicable, the parameters for the LRN layer are those of.
+
+	\subsubsection{Configuration}
+
+	The ConvNet configurations, evaluated in this paper, are outlined in Table
+	1, one per column. In the following we will refer to the nets by their names
+	(A–E).  All configurations follow the generic design presented in
+	Section~\ref{sssec:vgg arch} and differ only in the depth: from 11 weight
+	layers in the network A (8 conv. and 3 FC layers) to 19 weight layers in the
+	network E (16 conv. and 3 FC layers). The width of conv. layers (the number
+	of channels) is rather small, starting from 64 in the first layer and then
+	increasing by a factor of 2 after each max-pooling layer, until it reaches
+	512.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/vgg16_conf}
+		\caption{VGG16 configuration}%
+		\label{fig:vgg16_conf}
+	\end{figure}
+
+	\section[implementation]{Implementation}
 
 	\subsection{Assumptions and Dependencies}%
 	\label{sub:Assumptions and Dependencies}
