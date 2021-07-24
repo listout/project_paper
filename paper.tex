@@ -2,12 +2,11 @@
 
 % font
 \usepackage{tgschola}
-
-% sub figure
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage{amsmath}
 
 \usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -382,13 +381,159 @@
 		\label{Proposed Methodology}
 	\end{figure}
 
-	\textbf{ Image Acquisition: } The MRI brain images are acquired and are given as input
-	to pre-processing stage. The sample brain MR images are shown in figure 2.
+	\subsection{Image Acquisition}%
+	\label{sub:Image Acquisition}
 
-	%\textbf{ Preprocessing: } Preprocessing is needed as it provides improvement  in  image
-	%data  which    enhances  some  of  the  image  features  which  are
-	%important  for  further  processing.  The    pre-processing  steps  that
-	%are  applied  to  MR  image  are as follows :
+	The MRI brain images are acquired and are
+	given as input to pre-processing stage. The sample brain MR images are shown
+	in Figure~\ref{MRIScans}.
+
+	\begin{figure}[H]
+		\centering
+		\subfloat[MRI scan shown no presence of tumor]
+		{\includegraphics[width=0.4\linewidth]
+		{imgs/pred1.jpg}\label{scan2}}
+		\hspace{0.5cm}
+		\subfloat[MRI scan of a tumorous cell]
+		{\includegraphics[width=0.3\linewidth]
+		{imgs/Y100.JPG}\label{scan1}}
+		\caption{MRI Scans}
+		\label{MRIScans}
+	\end{figure}
+
+	\subsection{Preprocessing}%
+	\label{sub:Preprocessing}
+
+	Preprocessing is needed as it provides improvement
+	in image data which  enhances some of the image features which are important
+	for further processing. The  pre-processing steps that are applied to MR
+	image are as follows:
+
+	\begin{enumerate}
+		\item The  RGB  MR    image  is  converted  to  gray  scale image  and
+			then  median  filter  is  applied  for  noise  removal from brain MR
+			images as shown in Figure~\ref{smooted image}. The noise is to removed for further
+			processing as high accuracy is needed.
+
+		\item Then  edges  are  detected  from  filtered  image  using canny
+			edge  detection  as  shown  in  Figure~\ref{edge detection}.  The  edge detected
+			image is needed for segmentation of  the image
+
+		\item Then  watershed  segmentation  is  done  for  finding the
+			location  of  the  tumor  in  the  brain  image  as  shown  in
+			Figure~\ref{segmentation}. Segmentation is  the process of dividing  an image into
+			multiple segments. The aim of segmentation is to change
+			representation  of    image  into  something  which  is more  easy
+			to  analyze.  The result  of  watershed  segmentation is  label
+			image.    In  label  image,  all  the  different  objects identified
+			will  have  different  pixel  values  ,  all  the  pixels  of first
+			object  will have value 1, all the pixels of second object will have
+			value 2 and so on.
+	\end{enumerate}
+
+
+	\begin{figure}[H]
+		\centering
+		\subfloat[Original Image]
+		{\includegraphics[width=0.2\linewidth]
+		{imgs/Y100.JPG}\label{original}}
+		\hspace{0.5cm}
+		\subfloat[Filtered Imaage]
+		{\includegraphics[width=0.2\linewidth]
+		{imgs/median_filtering.png}\label{smooted image}}
+		\hspace{0.5cm}
+		\subfloat[Edge Detection]
+		{\includegraphics[width=0.2\linewidth]
+		{imgs/edges_detection.png}\label{edge detection}}
+		\hspace{0.5cm}
+		\subfloat[Segmentation]
+		{\includegraphics[width=0.2\linewidth]
+		{imgs/segmentation.png}\label{segmentation}}
+		\caption{preprocessing operations}
+		\label{Preprocessing Operations}
+	\end{figure}
+
+	\subsection{Feature Extraction}%
+	\label{sub:Feature Extraction}
+
+	When input to an algorithm is very large and
+	redundant to be processed, it is transformed into reduced representative set
+	of features called feature vector. Transformation of input data into set of
+	features is called feature extraction. In this step, the important features
+	needed for image classification are extracted. The segmented brain MR image
+	is used and texture features are extracted from the segmented image which
+	shows the texture property of the image. These features are extracted using
+	Gray Level Co-occurrence Matrix (GLCM) as it is robust method with high
+	performance.
+
+	The GLCM features are extracted as follows:
+
+	\begin{enumerate}
+		\item Energy: It gives a measure of textural uniformity, that is, measure
+			of pixel pair repetitions.
+
+			\begin{equation}
+				E = \sum^{N_g - 1}_{i=0} \sum^{N_g - 1}_{j=0} p(i, j)^2 \
+				\textnormal{ here, range = [0,1] }
+			\end{equation}
+
+		\item Contrast: It gives a measure of intensity contrast between a pixel
+			and its neighbor over the whole image.
+
+			\begin{equation}
+				Con = \sum^{N_g -1}_{n=0} n^2 \sum^{N_g -1}_{i=0} \sum^{N_g
+				-1}_{j=0} p(i,j)^2 \
+				\textnormal{ here, range = [0,1] }
+			\end{equation}
+
+		\item Correlation: It gives a measure of how correlated a pixel to its
+			neighbor over the whole image.
+
+			\begin{equation}
+				C = \frac{1}{\sigma^x \sigma^y}
+				\sum^{N_g - 1}_{i=0} \sum^{N_g -1}_{j=0} (i,j) p(i,j)^2
+				- \mu_x \mu_y \ \textnormal{here, range = [-1,1]}
+			\end{equation}
+
+		\item Homogeneity: It gives a measure of closeness of distribution of
+			elements in GLCM to GLCM diagonal.
+
+			\begin{equation}
+				H = \sum^{N_g -1}_{i=0} \sum^{N_g -1}_{j=0}
+				\frac{p(i,j)}{1 + \pmod{i,j}}
+				\ \textnormal{here, range = [0, 1]}
+			\end{equation}
+	\end{enumerate}
+
+	\subsection{Classification}%
+	\label{sub:Classification}
+
+	The Machine learning algorithms are used for
+	classification of MR brain image either as normal or abnormal.  The major
+	aim of ML algorithms is to automatically learn and make intelligent
+	decisions. The feature set formed by above specified method was applied to
+	Multi-Layer Perceptron (MLP) and Naive Bayes for classification.  MLP [3] is
+	a feed forward artificial neural network model that maps sets of input data
+	into a set of appropriate output. It is known as feed forward because it
+	does not contain any cycles and network output depends only on the current
+	input instance. In MLP, each node is a neuron with a nonlinear activation
+	function. It is based on supervised learning technique. Learning take place
+	by changing connection weights after each piece of data is processed, based
+	on the amount of error in the target output as compared to the expected
+	result. The goal of the learning procedure is to minimize error by improving
+	the current values of the weight associated with each edge. Because of this
+	backward changing process of the weights, model is named as
+	back-propagation.
+
+	Naive bayes is a supervised learning as well as statistical method for
+	classification. It is simple probabilistic classifier based on Bayes
+	theorem. It assumes that the value of a particular feature is unrelated to
+	the presence or absence of any other feature. The prior probability and
+	likelihood are calculated in order to calculate the posterior probability.
+	The method of maximum posterior probability is used for parameter
+	estimation. This method requires only a small amount of training data to
+	estimate the parameters which are needed for classification. The time taken
+	for training and classification is less.
 
 	\emergencystretch=1em
 	\printbibliography[heading=bibintoc,title={References}]
