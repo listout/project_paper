@@ -1,0 +1,73 @@
+\begin{minted}{python}
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Flatten, Dropout, Dense
+from tensorflow.keras.optimizers import RMSprop, Adam, SGD
+from matplotlib import pyplot as plt
+
+training_dataset_directory = '/content/dataset/training'
+testing_dataset_directory = '/content/dataset/testing'
+
+train_datagen = ImageDataGenerator(
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    vertical_flip=True,
+    preprocessing_function=preprocess_input,
+    validation_split=0.2
+)
+
+img_size = (150, 150)
+img_shape = img_size + (3,)
+random_seed = 123
+
+training_set = train_datagen.flow_from_directory(
+    training_dataset_directory,
+    target_size=img_size,
+    batch_size=32,
+    class_mode='binary',
+    subset='training'
+)
+
+testing_set = train_datagen.flow_from_directory(
+    testing_dataset_directory,
+    target_size=img_size,
+    class_mode='binary',
+    subset='validation'
+)
+
+img_size = (150, 150)
+img_shape = img_size + (3,)
+random_seed = 123
+
+resnet50 = ResNet50(
+    weights='imagenet',
+    include_top=False,
+    input_shape=img_shape
+)
+
+num_classes = 1
+model = Sequential()
+model.add(resnet50)
+model.add(Flatten())
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(num_classes, activation='sigmoid'))
+model.layers[0].trainable = False
+model.summary()
+
+model.compile(
+    loss='binary_crossentropy',
+    optimizer='Adam',
+    metrics=['accuracy']
+)
+
+epochs = 30
+history = model.fit(
+    training_set,
+    epochs=epochs,
+    validation_data=testing_set,
+)
+\end{minted}

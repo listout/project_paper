@@ -1,0 +1,93 @@
+\begin{minted}{python}
+import tensorflow as tf
+from keras_preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing import image_dataset_from_directory
+import matplotlib.image as mpimg
+from keras.preprocessing import image
+import cv2
+import os
+import glob
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+model = tf.keras.models.load_model('/content/gdrive/MyDrive/model/vgg_imp.h5')
+
+training_dataset_directory = '/content/dataset/training'
+testing_dataset_directory = '/content/dataset/testing'
+
+train_datagen = ImageDataGenerator(
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    vertical_flip=True,
+    preprocessing_function=preprocess_input,
+    validation_split=0.2
+)
+
+img_size = (150, 150)
+img_shape = img_size + (3,)
+random_seed = 123
+
+training_set = train_datagen.flow_from_directory(
+    training_dataset_directory,
+    target_size=img_size,
+    class_mode='binary',
+    subset='training'
+)
+
+testing_set = train_datagen.flow_from_directory(
+    testing_dataset_directory,
+    target_size=img_size,
+    class_mode='binary',
+    subset='validation'
+)
+
+loss, acc = model.evaluate(training_set)
+
+IMG_SIZE = (150,150)
+BATCH_SIZE = 32
+new_dataset = image_dataset_from_directory(
+    '/content/gdrive/MyDrive/dataset',
+    image_size=IMG_SIZE
+)
+
+predictions = model.predict(new_dataset,batch_size=BATCH_SIZE)
+
+img_dir = "/content/gdrive/MyDrive/dataset/pred"
+data_path = os.path.join(img_dir,'*g')
+files = glob.glob(data_path)
+data = []
+result = []
+for f1 in files:
+    test_image = image.load_img(f1, target_size = (150, 150))
+    test_image = image.img_to_array(test_image)
+    test_image = np.expand_dims(test_image, axis = 0)
+    images = np.vstack([test_image])
+    classes = model.predict(images, batch_size=10)
+    classes = np.round(classes)
+    data.append(f1)
+    result.append(classes)
+
+for x,y in zip(data, result):
+  print(x, y)
+
+img = cv2.imread(data[0])
+plt.imshow(img)
+plt.title(result[0])
+
+L = 4
+W = 4
+fig, axes = plt.subplots(L, W, figsize = (12,12))
+axes = axes.ravel()
+for i in np.arange(0, L * W):
+    img = cv2.imread(data[i])
+    axes[i].imshow(img)
+    axes[i].set_title(result[i])
+    axes[i].set_xticks([])
+    axes[i].set_yticks([])
+\end{minted}
