@@ -19,9 +19,8 @@
 \usepackage{wrapfig}
 
 % code listing
-\usepackage{bookmark}
 \usepackage{minted}
-\usemintedstyle[python]{tango}
+\usemintedstyle{tango}
 
 % sections on new page
 \usepackage{titlesec}
@@ -39,6 +38,7 @@
 }
 
 % bibliography
+\usepackage{bookmark}
 \usepackage{url}
 \usepackage[
 	backend=biber,
@@ -50,10 +50,12 @@
 \addbibresource{bibliography.bib}
 
 % table of content name
-\addto\captionsenglish{% Replace "english" with the language you use
-	\renewcommand{\contentsname}%
-	{\hfill \Huge Table of Content \hfill}%
-}
+%\usepackage[nottoc]{tocbibind}
+%\renewcommand{\theHsection}{\thepart.section.\thesection}
+%\addto\captionsenglish{% Replace "english" with the language you use
+	%\renewcommand{\contentsname}%
+	%{\hfill \Huge Table of Content \hfill}%
+%}
 
 \begin{document}
 
@@ -339,38 +341,7 @@
 	\end{itemize}
 
 	\section[background]{Background}
-
-	Natarajan \cite{bac1} proposed brain tumor detection method for MRI brain
-	images. The MRI brain images are first preprocessed using median filter,
-	then segmentation of image is done using threshold segmentation and
-	morphological operations are applied and then finally, the tumor region is
-	obtained using image subtraction technique. This approach gives the exact
-	shape of tumor in MRI brain image. Joshi \cite{bac2}  proposed brain tumor
-	detection and classification system in MR images by first extracting the
-	tumor portion from brain image, then extracting the texture features of the
-	detected tumor using Gray Level Co- occurrence Matrix (GLCM) and then
-	classified using neuro-fuzzy classifier. Amin and Mageed \cite{bac3}
-	proposed neural network and segmentation base system to automatically detect
-	the tumor in brain MRI images. The Principal Component Analysis (PCA) is
-	used for feature extraction and then Multi-Layer Perceptron (MLP) is used
-	classify the extracted features of MRI brain image.  The average recognition
-	rate is 88.2\% and peak recognition rate is 96.7\%.  Sapra \cite{bac4}
-	proposed image segmentation technique to detect brain tumor from MRI images
-	and then Probabilistic Neural Network (PNN)  is used for automated brain
-	tumor classification in MRI scans. PNN system proposed handle the process of
-	brain tumor classification more accurately. Suchita and Lalit \cite{bac5}
-	proposed unsupervised neural network learning technique for classification
-	of brain MRI images.  The MRI brain images are first preprocessed which
-	include noise filtering, edge detection, then the tumor is extracted using
-	segmentation. The texture features are extracted using Gray-Level
-	Co-occurrence Matrix(GLCM) and then Self-Organizing Maps (SOM) are used to
-	classify the brain as normal or abnormal brain, that is, whether it contain
-	tumor or not. Rajeshwari and Sharmila \cite{bac6} proposed preprocessing
-	techniques which are used to improve the quality of MRI image before using
-	it into an application. The average, median and wiener filters are used for
-	noise removal and interpolation based Discrete Wavelet Transform (DWT)
-	technique is used for resolution enhancement. The Peak Signal to Noise Ratio
-	(PSNR) is used for evaluation of these techniques.
+	\input{backgournd.tex}
 
 	\section[methodology]{Methodology}
 
@@ -883,6 +854,19 @@
 
 	\begin{figure}[H]
 		\centering
+		\subfloat[cnn using tensorflow]
+		{\includegraphics[width=0.4\linewidth]
+		{imgs/tf_cnn.png}\label{tf_cnn_cmp}}
+		\hspace{0.5cm}
+		\subfloat[cnn using fast.ai]
+		{\includegraphics[width=0.5\linewidth]
+		{imgs/fastai_cnn.png}\label{fastai_vgg16_cmp}}
+		\caption{CNN implemented in fast.ai and tensorflow}
+		\label{CNN in fast.ai and tensorflow}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
 		\subfloat[vgg16 using tensorflow]
 		{\includegraphics[width=0.4\linewidth]
 		{imgs/tf_vgg16.png}\label{tf_vgg16}}
@@ -916,17 +900,24 @@
 	There are lot of room for improvement but due to time and hardware
 	constrains we were able to only implement till such.
 
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{imgs/result.png}
-		\caption{Predictions made by the VGG16 model in tensorflow on random data}%
-		\label{fig:result}
+		\subfloat[prediction made by VGG16 implemented in tensorflow]
+		{\includegraphics[width=0.5\linewidth]
+		{imgs/result.png}\label{vgg16_tf}}
+		\hspace{0.3cm}
+		\subfloat[prediction made by ResNet50 implemented in fast.ai]
+		{\includegraphics[width=0.5\linewidth]
+		{imgs/result_fast_ai.png}\label{resnet_fastai}}
+		\caption{Comparing Predictions made by models}
+		\label{fig:Results_Comparison}
 	\end{figure}
 
-	As it can be seen from Figure~\ref{fig:result} there are some false
+	As it can be seen from Figure~\ref{fig:Results_Comparison} there are some false
 	positives in our predictions.
 
 	\section[appendix]{Appendix}%
+	\label{sec:Appendix}
 
 	\subsection{Tensorflow Implementation}%
 	\label{sub:Tensorflow Implementation}
@@ -946,11 +937,23 @@
 	\subsection{fast.ai Implementation}%
 	\label{sub:fast.ai Implementation}
 
+	\subsubsection{CNN}
+	\input{fastai_cnn.tex}
+
+	\textbf{Prediction}
+	\input{fastai_cnn_pred.tex}
+
 	\subsubsection{VGG 16}
 	\input{fastai_vgg.tex}
 
+	\textbf{Prediction}
+	\input{fastai_vgg_pred.tex}
+
 	\subsubsection{ResNet 50}
 	\input{fastai_resnet.tex}
+
+	\textbf{Prediction}
+	\input{fastai_resnet_pred.tex}
 
 	\emergencystretch=1em
 	\printbibliography[heading=bibintoc,title={References}]
