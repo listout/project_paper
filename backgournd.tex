@@ -1,0 +1,100 @@
+	Natarajan \cite{bac1} proposed brain tumor detection method for MRI brain
+	images. The MRI brain images are first preprocessed using median filter,
+	then segmentation of image is done using threshold segmentation and
+	morphological operations are applied and then finally, the tumor region is
+	obtained using image subtraction technique. This approach gives the exact
+	shape of tumor in MRI brain image. Joshi \cite{bac2} proposed brain tumor
+	detection and classification system in MR images by first extracting the
+	tumor portion from brain image, then extracting the texture features of the
+	detected tumor using Gray Level Co-occurrence Matrix (GLCM) and then
+	classified using neuro-fuzzy classifier. Amin and Mageed \cite{bac3}
+	proposed neural network and segmentation base system to automatically detect
+	the tumor in brain MRI images. The Principal Component Analysis (PCA) is
+	used for feature extraction and then Multi-Layer Perceptron (MLP) is used
+	classify the extracted features of MRI brain image. The average recognition
+	rate is 88.2\% and peak recognition rate is 96.7\%. Sapra \cite{bac4}
+	proposed image segmentation technique to detect brain tumor from MRI images
+	and then Probabilistic Neural Network (PNN) is used for automated brain
+	tumor classification in MRI scans. PNN system proposed handle the process of
+	brain tumor classification more accurately. Suchita and Lalit \cite{bac5}
+	proposed unsupervised neural network learning technique for classification
+	of brain MRI images. The MRI brain images are first preprocessed which
+	include noise filtering, edge detection, then the tumor is extracted using
+	segmentation. The texture features are extracted using Gray-Level
+	Co-occurrence Matrix(GLCM) and then Self-Organizing Maps (SOM) are used to
+	classify the brain as normal or abnormal brain, that is, whether it contain
+	tumor or not. Rajeshwari and Sharmila \cite{bac6} proposed preprocessing
+	techniques which are used to improve the quality of MRI image before using
+	it into an application. The average, median and wiener filters are used for
+	noise removal and interpolation based Discrete Wavelet Transform (DWT)
+	technique is used for resolution enhancement. The Peak Signal to Noise Ratio
+	(PSNR) is used for evaluation of these techniques.
+
+	George and Karnan \cite{George2012MRIBI} proposed MRI image enhancement
+	technique based on Histogram Equalization and Center Weighted Median (CWM)
+	filter as they are used to enhance the MRI image more effectively. Daljit
+	Singh et \cite{Funmilola2015ClassificationOA} proposed a hybrid technique
+	for automatic classification of MRI images by first extracting the features
+	using Principal Component Analysis (PCA) and Gray-Level Co-occurrence
+	Matrix(GLCM) and then extracted features are fed as an input to Support
+	Vector Machine(SVM) classifier which classifies the brain image as normal or
+	abnormal. Gadpayleand and Mahajani \cite{9074375} proposed brain tumour
+	detection and classification system. The tumor is extracted using
+	segmentation and then texture features are extracted using GLCM and finally
+	the BPNN and KNN classifiers are used to classify the MRI brain image into
+	normal or abnormal brain. The accuracy is 70\% using KNN classifier and
+	72.5\% by using BPNN classifier. Shasidhar et al. in \cite{article} proposed
+	modified Fuzzy C-Means (FCM) algorithm for MR brain tumor detection. The
+	texture features are extracted from brain MR image and then modified FCM
+	algorithm is used for brain tumor detection. The average speed-ups of as
+	much as 80 times a traditional FCM algorithm is obtained using the modified
+	FCM algorithm. The modified FCM algorithm is a fast alternative to the
+	traditional FCM technique.  Rajesh and Malar \cite{inproceedings} proposed
+	brain MR image classification based on Rough set theory and feed-forward
+	neural network classifier. The features are extracted from MRI images using
+	Rough set theory. The selected features are fed as input to Feed Forward
+	Neural Network classifier which differentiate between normal and abnormal
+	brain and the accuracy of about 90\% is obtained.
+
+	Ramteke and Monali \cite{article2} proposed automatic classification of
+	brain MR images in two classes Normal and Abnormal based on image features
+	and automatic abnormality detection. The Statistical texture feature set is
+	obtained from normal and abnormal images and then KNN classifier is used for
+	classifying image. The KNN obtain 80\% classification rate.  Xuan and Liao
+	\cite{4297123} proposed statistical structure analysis based tumor
+	segmentation technique. The intensity-based, symmetry-based and texture-
+	based features are extracted from MR image. Then, classification technique
+	using AdaBoost is used to classify the MR image into normal tissues and
+	abnormal images. The average accuracy of about 96.82\% is achieved. Othman
+	et al. in \cite{5730335} proposed Probabilistic neural network technique for
+	brain tumor classification. Firstly, the features are extracted using the
+	principal component analysis (PCA) and the classification is performed using
+	Probabilistic Neural Network (PNN).  Ibrahim et al. in \cite{inproceedings2}
+	proposed Neural Network technique for the classification of the magnetic
+	resonance human brain images. The features are extracted using principal
+	Component Analysis (PCA) and then Back- Propagation Neural Network is used
+	as a classifier to classify MRI brain images as normal or abnormal. The
+	classification accuracy of about 96.33\% is obtained. Jafari and Shafaghi
+	\cite{article3} proposed a hybrid approach for brain tumor detection in MR
+	images based on Support Vector Machines(SVM). The texture and intensity
+	features are used. The accuracy of about 83.22\% is achieved and is more
+	robust.
+
+	Thus from extensive literature survey we found that most of the current
+	brain tumor detection system uses texture, symmetry and intensity as
+	features. Texture features are important property of brain as texture
+	perception has a very important aspect in the human visual system of
+	recognition and interpretation \cite{article4}. Here, we propose extracting
+	texture features like energy, contrast, correlation, Homogenity
+	\cite{6524466}. Gray Level Co-occurrence Matrix is used for extraction of
+	texture features.
+
+	Further we propose the use of ML algorithms to overcome the drawbacks of
+	traditional classifiers. We investigate and compare the performance of two
+	machine learning algorithms namely MLP and Naive Bayes in this work. Since
+	these ML algorithms are found to perform well in most of the pattern
+	classification tasks. Neural networks are useful as they can learn complex
+	mappings between input and output. They are capable of solving much more
+	complicated classification tasks. However, when certain rules cannot be
+	modeled exactly, the concept of probability is used, which is the basis for
+	Naive Bayes classification.
