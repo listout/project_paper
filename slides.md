@@ -3,12 +3,8 @@ title: Brain Tumor Detection using Machine Learning Models
 subtitle: B.Sc. Semester VI Project
 aspectratio: 169
 theme: Madrid
-author:
-	- Rajarshi Sardar
-	- Bhargav Basu
-	- Shoptorshi Bhattacharjee
-	- Brahmajit Das
-institute: Gurudas College, Calcutta University
+header-includes:
+	- \AtBeginDocument{\author[Rajarshi, Bhargav, Soptorshi, Brahmajit]{Rajarshi Sardar \and Bhargav Basu \and Soptorshi Bhattacharjee \and Brahmajit Das} \institute[Gurudas College]{Gurudas College, Calcutta University}}
 ---
 
 # Domain Description
