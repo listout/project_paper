@@ -1,13 +1,14 @@
 ---
-title: Brain Tumor Detection using Machine Learing Models
+title: Brain Tumor Detection using Machine Learning Models
+subtitle: B.Sc. Semester VI Project
 aspectratio: 169
 theme: Madrid
 author:
-	- Rajarshi
-	- Bhargav
-	- Shoptorshi
-	- Brahmajit
-institute: Gurudas College
+	- Rajarshi Sardar
+	- Bhargav Basu
+	- Shoptorshi Bhattacharjee
+	- Brahmajit Das
+institute: Gurudas College, Calcutta University
 ---
 
 # Domain Description
@@ -19,27 +20,13 @@ institute: Gurudas College
 . . .
 
 2. **Machine Learning**: Machine learning approaches address these problems by
-   mainly using hand-crafted features (or pre-defined features). As an initial
-   step in this kind of segmentation, the key information is extracted from the
-   input image using some feature extraction algorithm, and then a
-   discriminative model is trained to recognize the tumor from normal tissues.
+   mainly using hand-crafted features (or pre-defined features).
 
 . . .
 
 3. **Brain Scan**: Brain scan is a picture of the internal structure of the
    brain. A specialized machine takes a scan in the same way as a digital camera
-   takes a photograph. Using computer technology, a scan compiles an image of
-   the brain by photographing it from various angles. Some types of scan uses
-   contrast agent (or contrast dye), which helps the doctor to see the
-   difference between normal and abnormal brain tissues.
-
-. . .
-
-**MRI (Magnetic Resonance Imaging)**: It is a scanning device that uses magnetic
-field and computer to capture images of the brain on films. It does not use
-x-rays. It provides pictures from various planes, which permits doctor to create
-a three-dimensional image of the tumor. The MRI detects signals emitted from
-normal and abnormal tissues, providing clear images of almost all tumors.
+   takes a photograph.
 
 # Motivation
 
@@ -51,12 +38,6 @@ used in many clinical and research applications to analyze medical imaging
 datasets; which motivated us to present a snapshot of dynamically changing field
 of medical image segmentation.
 
-CT (Computed Tomography), MRI (Magnetic Resonance Imaging), PET (Positron
-Emission Tomography) etc. generates a large amount of image information. With
-the improved technology, not only does the size and resolution of the images
-grow but also the number of dimensions increases. In the future, we would like
-to have algorithms which can automatically detect diseases, lesions and tumors,
-and highlight their locations in the large pile of images.
 
 The motivation of this work is to increase patient safety by providing better
 and more precise data for medical decision.
@@ -93,6 +74,8 @@ used, which is the basis for Naive Bayes classification.
 
 The MRI brain images are acquired and are given as input to pre-processing stage
 
+##
+
 ![A MRI Scan](imgs/pred0.jpg){width=30%}
 
 # Methodology
@@ -102,7 +85,9 @@ The MRI brain images are acquired and are given as input to pre-processing stage
 Preprocessing is needed as it provides improvement in image data which enhances
 some of the image features which are important for further processing.
 
-![Segmented Image](imgs/segmentation.png){width=20%}
+##
+
+![A MRI than have been through image segmentation or thresholding](imgs/segmentation.png){width=20%}
 
 # Methodology
 
@@ -170,7 +155,9 @@ shared-weight architecture of the convolution kernels or filters that slide
 along input features and provide translation equivariant responses known as
 feature maps.
 
-![Architecture](imgs/cnn_arch.png){width=30%}
+##
+
+![Architecture of a CNN](imgs/cnn_arch.png){width=30%}
 
 # Methodology
 
@@ -182,7 +169,9 @@ tasks, but are also applicable to other image recognition datasets, where they
 achieve excellent performance even when used as a part of a relatively simple
 pipelines (e.g. deep features classified by a linear SVM without fine-tuning).
 
-![Architecture](imgs/vgg16_arch.png){width=30%}
+##
+
+![Architecture of VGG 16](imgs/vgg16_arch.png){width=30%}
 
 # Methodology
 
@@ -193,7 +182,9 @@ ResNet50 is a variant of ResNet model which has 48 Convolution layers along with
 operations. It is a widely used ResNet model and we have explored ResNet50
 architecture in depth.
 
-![Architecture](imgs/resnet_arch.png){width=50%}
+##
+
+![Architecture of ResNet 50, in tabular form](imgs/resnet_arch.png){width=50%}
 
 # Implementation
 
@@ -212,23 +203,17 @@ pre-installed on the system. The modules namely include:
 
 # Implementation
 
-## Implementation Method
 
-After acquiring the data, the data is classified into two classes (binary
-class) of yes, consisting of tumorous cell and no, not consisting tumorous
-cells. A second batch of images is kept separate for prediction, the
-prediction batch.
+- Acquire Data (MRI Scans)
+- Divide them into classes for training, while keeping a batch for prediction
+- Build the models (using a library, through code)
+- Train the model with the gathered data
+- Test the trained model with the prediction batch
 
-Next three machine learning models are created. A \textbf{CNN} or a
-convolutional neural network, \textbf{VGG 16} and \textbf{Resnet 50}. The
-models are implemented in both fast.ai and tensorflow, to be compared later.
+##
 
-While training the images are resized to $(150 \times 150)$ and augmented at
-runtime, thus removing bias as much as possible. Since there are only two
-possible classes (yes and no), a binary class is sufficient; dividing the
-images into training and testing (validation set) in $80:20$ ratio. Giving
-us $2603 \ \textnormal{and} \ 650$ images for the \textit{yes} and
-\textit{no} classes, respectively.
+This is just an over view, a more detailed implementation is described in the
+description.
 
 # Results
 
