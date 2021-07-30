@@ -1,10 +1,10 @@
 ---
 title: Brain Tumor Detection using Machine Learning Models
-subtitle: B.Sc. Semester VI Project
+subtitle: B.Sc. Semester VI Project \newline Department of Computer Science, Gurudas College
 aspectratio: 169
 theme: Madrid
 header-includes:
-	- \AtBeginDocument{\author[Rajarshi, Bhargav, Soptorshi, Brahmajit]{Rajarshi Sardar \and Bhargav Basu \and Soptorshi Bhattacharjee \and Brahmajit Das} \institute[Gurudas College]{Gurudas College, Calcutta University}}
+	- \AtBeginDocument{\author[Rajarshi, Bhargav, Soptorshi, Brahmajit]{Rajarshi Sardar \newline \and Bhargav Basu \newline \and Soptorshi Bhattacharjee \newline \and Brahmajit Das} \institute[Gurudas College]{Gurudas College, Calcutta University}}
 ---
 
 # Domain Description
