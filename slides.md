@@ -38,20 +38,6 @@ of medical image segmentation.
 The motivation of this work is to increase patient safety by providing better
 and more precise data for medical decision.
 
-# Scope of Work
-
-- Deliverables: Working program to take an MRI scan as input and predict presence of tumorous cells with $\geq$ 90% accuracy.
-
-- Scope: The working program has external dependencies ( libraries ) and it’s expected to have a them installed for the program to work.
-
-- Timeline
-	- April 27, 2021 Project Assigned
-    - May 2, 2021 Project finalized by supervisor, and group is divided into groups of two.
-    - May 3, 2021 Data collection started.
-    - May 12, 2021 Project Repository created and coding is started.
-    - July 7, 2021 Coding is finished, documentation is started.
-	- Just 21, 2021 Documentation complete.
-
 # Background
 
 We propose the use of ML algorithms to overcome the drawbacks of traditional
@@ -63,27 +49,6 @@ networks are useful as they can learn complex mappings between input and output.
 They are capable of solving much more complicated classification tasks. However,
 when certain rules cannot be modeled exactly, the concept of probability is
 used, which is the basis for Naive Bayes classification.
-
-# Methodology
-
-## Image Acquisition
-
-The MRI brain images are acquired and are given as input to pre-processing stage
-
-##
-
-![A MRI Scan](imgs/pred0.jpg){width=30%}
-
-# Methodology
-
-## Pre-processing
-
-Preprocessing is needed as it provides improvement in image data which enhances
-some of the image features which are important for further processing.
-
-##
-
-![A MRI than have been through image segmentation or thresholding](imgs/segmentation.png){width=20%}
 
 # Methodology
 
