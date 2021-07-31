@@ -1,0 +1,65 @@
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{tgschola}
+\usepackage{inconsolata}
+\usepackage{amsmath}
+
+% images
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage[ddmmyyyy]{datetime}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{wrapfig}
+
+% page border
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+
+% spacing in certificate
+\usepackage{changepage}
+\usepackage{setspace}
+
+% code listing
+\usepackage{minted}
+\usemintedstyle{tango}
+
+% sections on new page
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+%\setcounter{secnumdepth}{0}
+
+% index and clickable toc
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+% bibliography
+\usepackage{bookmark}
+\usepackage{url}
+\usepackage[
+	backend=biber,
+	style=numeric,
+	%citestyle=ieee
+]{biblatex}
+\usepackage{csquotes}
+
+\addbibresource{bibliography.bib}
+
+% table of content name
+%\usepackage[nottoc]{tocbibind}
+%\renewcommand{\theHsection}{\thepart.section.\thesection}
+%\addto\captionsenglish{% Replace "english" with the language you use
+	%\renewcommand{\contentsname}%
+	%{\hfill \Huge Table of Content \hfill}%
+%}
