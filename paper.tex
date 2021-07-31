@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[10pt]{report}
 
 \input{imports.tex}
 
@@ -540,7 +540,7 @@
 
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\linewidth]{imgs/vgg16_conf}
+		\includegraphics[width=0.5\linewidth]{imgs/vgg16_conf}
 		\caption{VGG16 configuration}%
 		\label{fig:vgg16_conf}
 	\end{figure}
@@ -548,13 +548,6 @@
 	\section{ResNet 50}%
 
 	\subsection{Residual Learning}
-
-	\begin{wrapfigure}{r}{0.5\textwidth}
-		\begin{center}
-			\includegraphics[ width=0.5\textwidth ]{imgs/resnet_arch2.png}
-		\end{center}
-		\caption{Resnet Architecture}
-	\end{wrapfigure}
 
 	Let us consider $H(x)$ as an underlying mapping to be fit by a few stacked
 	layers (not necessarily the entire net), with $x$ denoting the inputs to the
@@ -571,7 +564,23 @@
 	able to asymptot- ically approximate the desired functions (as
 	hypothesized), the ease of learning might be different \cite[3]{he2015deep}.
 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\linewidth]{imgs/resnet_arch.png}
+		\caption{resnet50 configuration}%
+		\label{fig:resnet conf}
+	\end{figure}
+
+
 	\subsection{Network Architecture}
+
+	\begin{wrapfigure}{r}{0.5\textwidth}
+		\begin{center}
+			\includegraphics[ width=0.5\textwidth ]{imgs/resnet_arch2.png}
+		\end{center}
+		\caption{Resnet Architecture}
+	\end{wrapfigure}
+
 
 	The plain/residual network was tested as follows:
 
@@ -610,13 +619,6 @@
 	\end{enumerate}
 	For both options, when the shortcuts go across feature maps of two sizes,
 	they are performed with a stride of 2 \cite[4]{he2015deep} .
-
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=\linewidth]{imgs/resnet_arch.png}
-		\caption{resnet50 configuration}%
-		\label{fig:resnet conf}
-	\end{figure}
 
 	\chapter{Implementation}
 
