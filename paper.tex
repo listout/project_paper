@@ -1,70 +1,6 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
-% fonts
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{microtype}
-\usepackage{tgschola}
-\usepackage{inconsolata}
-\usepackage{amsmath}
-
-% images
-\usepackage{graphicx}
-\usepackage{subfig}
-\usepackage{float}
-\usepackage{multicol}
-\usepackage[ddmmyyyy]{datetime}
-\usepackage[a4paper, margin=2cm]{geometry}
-\usepackage{wrapfig}
-
-% page border
-\usepackage{tikz}
-\usetikzlibrary{calc}
-\usepackage{eso-pic}
-
-% spacing in certificate
-\usepackage{changepage}
-\usepackage{setspace}
-
-% code listing
-\usepackage{minted}
-\usemintedstyle{tango}
-
-% sections on new page
-\usepackage{titlesec}
-\newcommand{\sectionbreak}{\clearpage}
-%\setcounter{secnumdepth}{0}
-
-% index and clickable toc
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=black
-}
-
-% bibliography
-\usepackage{bookmark}
-\usepackage{url}
-\usepackage[
-	backend=biber,
-	style=numeric,
-	%citestyle=ieee
-]{biblatex}
-\usepackage{csquotes}
-
-\addbibresource{bibliography.bib}
-
-% table of content name
-%\usepackage[nottoc]{tocbibind}
-%\renewcommand{\theHsection}{\thepart.section.\thesection}
-%\addto\captionsenglish{% Replace "english" with the language you use
-	%\renewcommand{\contentsname}%
-	%{\hfill \Huge Table of Content \hfill}%
-%}
+\input{imports.tex}
 
 \begin{document}
 
@@ -80,20 +16,13 @@
 	\tableofcontents
 
 	% abstract
-	\section[abstract]{Abstract}
+	%\section[abstract]{Abstract}
+	\chapter{Abstract}
 
 	% reverting back to normal page numbering
 	\pagenumbering{arabic}
 
 	\thispagestyle{plain}
-	\begin{center}
-		\Large
-		\textbf{Brain Tumor Detection}
-
-		\vspace{0.4cm}
-		\large
-		Using various machine learning models to detect brain tumor.
-	\end{center}
 
 	Tumors are cancerous or non-cancerous mass or growth of abnormal cells in
 	brain. Tumors can start in brain, or cancer elsewhere in the body can spread
@@ -124,20 +53,20 @@
 	Various levels involved in the proposed mechanisms are:
 
 	\begin{enumerate}
-		\item \textbf{ Data collection }
-		\item \textbf{ Pre-processing }
-		\item \textbf{ Average filtering }
-		\item \textbf{ segmentation }
-		\item \textbf{ feature extraction }
-		\item \textbf{CNN (or any other model) via classification and identification. By
+		\item Data collection
+		\item Pre-processing
+		\item Average filtering
+		\item Segmentation
+		\item Feature extraction
+		\item CNN (or any other model) via classification and identification. By
 			utilizing the DM (data mining) techniques, significant relations and
 			patterns from the data can be extracted. The techniques of ML
 			(machine learning) and Data mining are being effectively employed
-			for brain tumor detection and prevention at an early stage.}
+			for brain tumor detection and prevention at an early stage.
 	\end{enumerate}
 
-	\section[introduction]{Introduction}
-	\subsection[domain description]{Domain Description}
+	\chapter{Introduction}
+	\section[domain description]{Domain Description}
 
 	\begin{enumerate}
 		\item \textbf{Neurological Examination}: It is a series of test to
@@ -172,7 +101,7 @@
 			tissues, providing clear images of almost all tumors.
 	\end{enumerate}
 
-	\subsection[motivation]{Motivation}
+	\section[motivation]{Motivation}
 	The motivation is to develop a software with better segmentation capability
 	for use in medical imaging to detect diseases like brain tumor. Image
 	segmentation has been identified as the key problem of medical image
@@ -192,14 +121,14 @@
 	The motivation of this work is to increase patient safety by providing
 	better and more precise data for medical decision.
 
-	\subsection[scope of work]{Scope of Work}
-	\subsubsection[deliverables]{Deliverables}
+	\section[scope of work]{Scope of Work}
+	\subsection[deliverables]{Deliverables}
 	\begin{itemize}
 		\item Working program to take an MRI scan as input and predict presence
 			of tumorous cells with $\geq 90\%$ accuracy.
 	\end{itemize}
 
-	\subsubsection[scope]{Scope}
+	\section[scope]{Scope}
 	\begin{itemize}
 		\item The working program has external dependencies ( libraries ) and
 			it's expected to have a them installed for the program to work.
@@ -226,10 +155,10 @@
 		\item Report back to supervisor every once a week.
 	\end{itemize}
 
-	\section[background]{Background}
+	\chapter{Background}
 	\input{backgournd.tex}
 
-	\section[methodology]{Methodology}
+	\chapter{Methodology}
 
 	As per literature survey, it was found that automated  brain  tumor
 	detection  is  very  necessary  as  high accuracy is needed when human life
@@ -245,8 +174,7 @@
 		\label{Proposed Methodology}
 	\end{figure}
 
-	\subsection{Image Acquisition}%
-	\label{sub:Image Acquisition}
+	\section{Image Acquisition}%
 
 	The MRI brain images are acquired and are
 	given as input to pre-processing stage. The sample brain MR images are shown
@@ -265,8 +193,7 @@
 		\label{MRIScans}
 	\end{figure}
 
-	\subsection{Preprocessing}%
-	\label{sub:Preprocessing}
+	\section{Preprocessing}%
 
 	Preprocessing is needed as it provides improvement
 	in image data which  enhances some of the image features which are important
@@ -296,7 +223,7 @@
 	\end{enumerate}
 
 
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\subfloat[Original Image]
 		{\includegraphics[width=0.2\linewidth]
@@ -317,8 +244,7 @@
 		\label{Preprocessing Operations}
 	\end{figure}
 
-	\subsection{Feature Extraction}%
-	\label{sub:Feature Extraction}
+	\section{Feature Extraction}%
 
 	When input to an algorithm is very large and
 	redundant to be processed, it is transformed into reduced representative set
@@ -369,8 +295,7 @@
 			\end{equation}
 	\end{enumerate}
 
-	\subsection{Classification}%
-	\label{sub:Classification}
+	\section{Classification}%
 
 	The Machine learning algorithms are used for
 	classification of MR brain image either as normal or abnormal.  The major
@@ -402,8 +327,7 @@
 	For classification three models are used; \textbf{CNN}, \textbf{VGG 16} and
 	\textbf{Resnet 50}.
 
-	\subsection{Convolutional Neural Network}%
-	\label{sub:Convolutional Neural Network}
+	\section{Convolutional Neural Network}%
 
 	CNN or Convolutional Neural Network a class of artificial neural network,
 	most commonly applied to analyze visual imagery.They are also known as
@@ -553,7 +477,7 @@
 	filter, as opposed to each receptive field having its own bias and vector
 	weighting.
 
-	\subsection{VGG 16}
+	\section{VGG 16}
 
 	VGG 16 is is a significantly more accurate ConvNet architecture, which not
 	only achieve state-of-the-art accuracy on ILSVRC classification and
@@ -562,8 +486,8 @@
 	of a relatively simple pipelines (e.g. deep features classified by a linear
 	SVM without fine-tuning) \cite[1]{simonyan2015deep}.
 
-	\subsubsection{Architecture}
-	\label{sssec:vgg arch}
+	\subsection{Architecture}
+	\label{sec:vgg_arch}
 
 	\begin{wrapfigure}{r}{0.5\textwidth}
 		\begin{center}
@@ -601,12 +525,12 @@
 	leads to increased memory con- sumption and computation time.
 	\cite[1]{simonyan2015deep}
 
-	\subsubsection{Configuration}
+	\subsection{Configuration}
 
 	The ConvNet configurations, evaluated in this paper, are outlined in
 	Figure~\ref{fig:vgg16_conf}, one per column. In the following we will refer
 	to the nets by their names (A–E).  All configurations follow the generic
-	design presented in Section~\ref{sssec:vgg arch} and differ only in the
+	design presented in Section~\ref{sec:vgg_arch} and differ only in the
 	depth: from 11 weight layers in the network A (8 conv. and 3 FC layers) to
 	19 weight layers in the network E (16 conv. and 3 FC layers). The width of
 	conv. layers (the number of channels) is rather small, starting from 64 in
@@ -614,17 +538,16 @@
 	layer, until it reaches 512.
 	\cite[3]{simonyan2015deep}
 
-	\begin{figure}[h]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\linewidth]{imgs/vgg16_conf}
 		\caption{VGG16 configuration}%
 		\label{fig:vgg16_conf}
 	\end{figure}
 
-	\subsection{ResNet 50}%
-	\label{sub:ResNet 50}
+	\section{ResNet 50}%
 
-	\subsubsection{Residual Learning}
+	\subsection{Residual Learning}
 
 	\begin{wrapfigure}{r}{0.5\textwidth}
 		\begin{center}
@@ -648,7 +571,7 @@
 	able to asymptot- ically approximate the desired functions (as
 	hypothesized), the ease of learning might be different \cite[3]{he2015deep}.
 
-	\subsubsection{Network Architecture}
+	\subsection{Network Architecture}
 
 	The plain/residual network was tested as follows:
 
@@ -695,10 +618,9 @@
 		\label{fig:resnet conf}
 	\end{figure}
 
-	\section[implementation]{Implementation}
+	\chapter{Implementation}
 
-	\subsection{Assumptions and Dependencies}%
-	\label{sub:Assumptions and Dependencies}
+	\section{Assumptions and Dependencies}%
 	It is assumed that the MRI scans are collected and processed before feeding
 	into the module.
 
@@ -712,8 +634,7 @@
 		\item \href{https://matplotlib.org/}{matplotlib}
 	\end{itemize}
 
-	\subsection{Implementation Methods}%
-	\label{sub:Implementation Methods}
+	\section{Implementation Methods}%
 	After acquiring the data, the data is classified into two classes (binary
 	class) of yes, consisting of tumorous cell and no, not consisting tumorous
 	cells. A second batch of images is kept separate for prediction, the
@@ -731,10 +652,10 @@
 	\textit{no} classes, respectively.
 
 	After training is complete the models are then evaluated (further discussed
-	in Section~\ref{sec:result} )
+	in Chapter~\ref{chap:Res} )
 
-	\section[result]{Result}%
-	\label{sec:result}
+	\chapter{Result}
+	\label{chap:Res}
 
 	The evaluated models are plotted on graph for better understanding of data.
 
@@ -802,40 +723,37 @@
 	As it can be seen from Figure~\ref{fig:Results_Comparison} there are some false
 	positives in our predictions.
 
-	\section[appendix]{Appendix}%
-	\label{sec:Appendix}
+	\chapter{Appendix}
 
-	\subsection{Tensorflow Implementation}%
-	\label{sub:Tensorflow Implementation}
+	\section{Tensorflow Implementation}%
 
-	\subsubsection{CNN}
+	\section{CNN}
 	\input{tf_cnn.tex}
 
-	\subsubsection{VGG 16}
+	\section{VGG 16}
 	\input{tf_vgg.tex}
 
-	\subsubsection{ResNet 50}
+	\section{ResNet 50}
 	\input{tf_reset.tex}
 
-	\subsubsection{Prediction}
+	\section{Prediction}
 	\input{tf_prediction.tex}
 
-	\subsection{fast.ai Implementation}%
-	\label{sub:fast.ai Implementation}
+	\section{fast.ai Implementation}%
 
-	\subsubsection{CNN}
+	\section{CNN}
 	\input{fastai_cnn.tex}
 
 	\textbf{Prediction}
 	\input{fastai_cnn_pred.tex}
 
-	\subsubsection{VGG 16}
+	\section{VGG 16}
 	\input{fastai_vgg.tex}
 
 	\textbf{Prediction}
 	\input{fastai_vgg_pred.tex}
 
-	\subsubsection{ResNet 50}
+	\section{ResNet 50}
 	\input{fastai_resnet.tex}
 
 	\textbf{Prediction}
