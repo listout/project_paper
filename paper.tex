@@ -349,7 +349,7 @@
 		\label{CNN Architecture}
 	\end{figure}
 
-	\subsubsection{Architecture}
+	\subsection{Architecture}
 
 	A convolutional neural network consists of an input layer, hidden layers and
 	an output layer. In any feed-forward neural network, any middle layers are
@@ -364,7 +364,8 @@
 	the next layer. This is followed by other layers such as pooling layers,
 	fully connected layers, and normalization layers \cite{covnet_arch}.
 
-	\textbf{Convolutional Layer}:
+	\subsection{Convolutional Layer}:
+
 	In a CNN, the input is a tensor with a shape: (number of inputs) x (input
 	height) x (input width) x (input channels). After passing through a
 	convolutional layer, the image becomes abstracted to a feature map, also
@@ -385,7 +386,8 @@
 	layer. This is similar to the response of a neuron in the visual cortex to a
 	specific stimulus.
 
-	\textbf{Pooling Layer}:
+	\subsection{Pooling Layer}:
+
 	Convolutional networks may include local and/or global pooling layers along
 	with traditional convolutional layers. Pooling layers reduce the dimensions
 	of data by combining the outputs of neuron clusters at one layer into a
@@ -396,7 +398,7 @@
 	cluster of neurons in the feature map, while average pooling takes the
 	average value.
 
-	\textbf{ReLU Layer}:
+	\subsection{ReLU Layer}:
 
 	ReLU is the abbreviation of rectified linear unit, which applies the
 	non-saturating activation function
@@ -426,7 +428,7 @@
 	times faster without a significant penalty to generalization accuracy
 	 \cite{relu_layer}.
 
-	\textbf{Fully Connected Layer}
+	\subsection{Fully Connected Layer}
 
 	After several convolutional and max pooling layers, the final classification
 	is done via fully connected layers. Neurons in a fully connected layer have
@@ -435,7 +437,7 @@
 	be computed as an affine transformation, with matrix multiplication followed
 	by a bias offset (vector addition of a learned or fixed bias term).
 
-	\textbf{Loss Layer}
+	\subsection{Loss Layer}
 
 	The "loss layer", or "loss function", specifies how training penalizes the
 	deviation between the predicted output of the network, and the true data
@@ -447,7 +449,7 @@
 	predicting K independent probability values is $[0, 1]$.  Euclidean loss is
 	used for regressing to real-valued labels $(- \infty, \infty)$.
 
-	\textbf{Receptive field}
+	\subsection{Receptive field}
 
 	In neural networks, each neuron receives input from some number of locations
 	in the previous layer. In a convolutional layer, each neuron receives input
@@ -462,7 +464,7 @@
 	is more sparsely populated as its dimensions grow when combining the effect
 	of several layers.
 
-	\textbf{Weights}
+	\subsection{Weights}
 
 	Each neuron in a neural network computes an output value by applying a
 	specific function to the input values received from the receptive field in
@@ -565,9 +567,9 @@
 	able to asymptot- ically approximate the desired functions (as
 	hypothesized), the ease of learning might be different \cite[3]{he2015deep}.
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{imgs/resnet_arch.png}
+		\includegraphics[width=0.8\linewidth]{imgs/resnet_arch.png}
 		\caption{resnet50 configuration}%
 		\label{fig:resnet conf}
 	\end{figure}
@@ -577,7 +579,7 @@
 
 	\begin{wrapfigure}{r}{0.5\textwidth}
 		\begin{center}
-			\includegraphics[ width=0.5\textwidth ]{imgs/resnet_arch2.png}
+			\includegraphics[ width=0.45\textwidth ]{imgs/resnet_arch2.png}
 		\end{center}
 		\caption{Resnet Architecture}
 	\end{wrapfigure}
@@ -585,7 +587,7 @@
 
 	The plain/residual network was tested as follows:
 
-	\textbf{Plain Network}
+	\subsubsection{Plain Network}
 
 	Our plain baselines are mainly inspired by the philosophy of VGG nets.  The
 	convolutional layers mostly have 3×3 filters and follow two simple design
@@ -606,7 +608,8 @@
 	(multiply-adds), which is only 18\% of VGG-19 (19.6 billion FLOPs)
 	\cite[3]{he2015deep} .
 
-	\textbf{Residual Network}
+	\subsubsection{Residual Network}
+
 	Based on the above plain network, we insert shortcut connections which turn
 	the network into its counterpart residual version. The identity shortcuts
 	can be directly used when the input and output are of the same dimensions.
