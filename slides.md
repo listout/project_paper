@@ -4,8 +4,23 @@ subtitle: B.Sc. Semester VI Project \newline Department of Computer Science, Gur
 aspectratio: 169
 theme: Madrid
 header-includes:
-	- \AtBeginDocument{\author[Rajarshi, Bhargav, Soptorshi, Brahmajit]{Rajarshi Sardar \newline \and Bhargav Basu \newline \and Soptorshi Bhattacharjee \newline \and Brahmajit Das} \institute[Gurudas College]{Gurudas College, Calcutta University}}
+	- \AtBeginDocument{\author[Rajarshi, Bhargav, Soptorshi, Brahmajit]{Bhargav Basu \newline \and Soptorshi Bhattacharjee \newline \and Brahmajit Das \newline \and Rajarshi Sardar} \institute[Gurudas College]{Gurudas College, Calcutta University}}
 ---
+
+# Motivation
+
+The motivation is to develop a software with better segmentation capability for
+use in medical imaging to detect diseases like brain tumor. Image segmentation
+has been identified as the key problem of medical image analysis and remains a
+popular and challenging area of research. Image segmentation is increasingly
+used in many clinical and research applications to analyze medical imaging
+datasets; which motivated us to present a snapshot of dynamically changing field
+of medical image segmentation.
+
+
+The motivation of this work is to increase patient safety by providing better
+and more precise data for medical decision.
+
 
 # Domain Description
 
@@ -24,31 +39,24 @@ header-includes:
    brain. A specialized machine takes a scan in the same way as a digital camera
    takes a photograph.
 
-# Motivation
-
-The motivation is to develop a software with better segmentation capability for
-use in medical imaging to detect diseases like brain tumor. Image segmentation
-has been identified as the key problem of medical image analysis and remains a
-popular and challenging area of research. Image segmentation is increasingly
-used in many clinical and research applications to analyze medical imaging
-datasets; which motivated us to present a snapshot of dynamically changing field
-of medical image segmentation.
-
-
-The motivation of this work is to increase patient safety by providing better
-and more precise data for medical decision.
-
 # Background
 
 We propose the use of ML algorithms to overcome the drawbacks of traditional
-classifiers. We investigate and compare the performance of two machine learning
-algorithms namely MLP and Naive Bayes in this work. Since these ML algorithms
-are found to perform well in most of the pattern classification tasks. Neural
-networks are useful as they can learn complex mappings between input and output.
+classifiers. We investigate and compare the performance of various machine
+learning models, namely **CNN**, **VGG 16** and **ResNet 50**; implemented using
+the frameworks Tensorflow and fast.ai.
 
-They are capable of solving much more complicated classification tasks. However,
-when certain rules cannot be modeled exactly, the concept of probability is
-used, which is the basis for Naive Bayes classification.
+
+# Methodology
+
+<!--![Pre-processing](imgs/flowchart.png)-->
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/flowchart.png}
+	\caption{Proposed Pre-processing}%
+	\label{fig:imgs/flowchart}
+\end{figure}
 
 # Methodology
 
@@ -59,41 +67,6 @@ transformed into reduced representative set of features called feature vector.
 
 These features are extracted using Gray Level Co-occurrence Matrix (GLCM) as it
 is robust method with high performance.
-
-**Energy**
-
-\begin{equation}
-	E = \sum^{N_g - 1}_{i=0} \sum^{N_g - 1}_{j=0} p(i, j)^2 \
-	\textnormal{ here, range = [0, 1] }
-\end{equation}
-
-**Contrast**
-
-\begin{equation}
-	Con = \sum^{N_g -1}_{n=0} n^2 \sum^{N_g -1}_{i=0} \sum^{N_g
-	-1}_{j=0} p(i,j)^2 \
-	\textnormal{ here, range = [0, 1] }
-\end{equation}
-
-# Methodology
-
-## Feature Extraction
-
-**Correlation**
-
-\begin{equation}
-	C = \frac{1}{\sigma^x \sigma^y}
-	\sum^{N_g - 1}_{i=0} \sum^{N_g -1}_{j=0} (i,j) p(i,j)^2
-	- \mu_x \mu_y \ \textnormal{here, range = [-1, 1]}
-\end{equation}
-
-**Homogeneity**
-
-\begin{equation}
-	H = \sum^{N_g -1}_{i=0} \sum^{N_g -1}_{j=0}
-	\frac{p(i,j)}{1 + \pmod{i,j}}
-	\ \textnormal{here, range = [0, 1]}
-\end{equation}
 
 # Methodology
 
@@ -185,3 +158,15 @@ description.
 | ResNet 50 |            $97.54$           |           $99%$           |
 
 Table: Model accuracy.
+
+# Future Work
+
+We further plan on implementing out experiments on other better machine learning
+model such as **GAN**.
+
+A generative adversarial network (GAN) is a class of machine learning frameworks
+designed by Ian Goodfellow and his colleagues in 2014. Two neural networks
+contest with each other in a game (in the form of a zero-sum game, where one
+agent's gain is another agent's loss).
+
+We also plan on increasing out dataset for better training results.
