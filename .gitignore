@@ -10,4 +10,6 @@
 *.bcf
 *.blg
 *.xml
+*.nav
+*.snm
 _minted-paper
