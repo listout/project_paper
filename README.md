@@ -3,11 +3,6 @@
 `.tex` is the raw `tex` file. Respective pdf is added for a more readable
 format.
 
-Work done till now.
+TODO:
 
-- [x] Title Page.
-- [x] Certification
-- [x] Acknowledgement
-- [x] ToC
-- [x] Abstract
-- [x] Introduction (complete)
+- [ ] Conclusion and Future Work
