@@ -24,11 +24,21 @@
 
 \begin{document}
 
-	\frame{\titlepage}
+	\begin{frame}
+		\titlepage
+	\end{frame}
 
 	\begin{frame}
 		\frametitle{Overview}
-		\tableofcontents
+		\begin{columns}[totalwidth=0.9\textwidth]
+			\hspace*{2.5cm}
+			\begin{column}{0.35\textwidth}
+				\tableofcontents[sections={1-4}]
+			\end{column}
+			\begin{column}{0.35\textwidth}
+				\tableofcontents[sections={5-9}]
+			\end{column}
+		\end{columns}
 	\end{frame}
 
 	\section{Motivation}
@@ -88,9 +98,11 @@
 	\begin{frame}
 		\frametitle{Methodology}
 
+		\vspace{-1cm}
+
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.7\linewidth]{imgs/methodology}
+			\includegraphics[width=\textwidth]{imgs/flowchart}
 			\caption{Proposed Methodology}%
 			\label{fig:prop_methodology}
 		\end{figure}
@@ -129,7 +141,7 @@
 		enhances some of the image features which are important for further
 		processing.
 
-		\vspace{1cm}
+		\vspace{0.5cm}
 
 		Preprocessing includes:
 
@@ -139,6 +151,14 @@
 			\item Edge Detection
 			\item Segmentation
 		\end{itemize}
+
+		\begin{block}{Segmentation}
+			Image segmentation is the process of partitioning a digital image into multiple
+			segments (sets of pixels, also known as image objects). The goal of
+			segmentation is to simplify and/or change the representation of an image into
+			something that is more meaningful and easier to analyze.
+		\end{block}
+
 	\end{frame}
 
 	\begin{frame}
@@ -338,15 +358,115 @@
 		\frametitle{Result}
 		\framesubtitle{Comparing the model accuracies}
 
-		\begin{center}
-			\begin{tabular}{| c | c | c |}
-				\hline
-				Model & Implementation using TensorFlow & Implementation using
-				fast.ai \\
-				\hline
-				CNN & 90.31\% & 92.66\% \\
-				\hline
-			\end{tabular}
-		\end{center}
+		\begin{table}
+			\begin{center}
+				\begin{tabular}{| c | c | c |}
+					\hline
+					Model & Implementation using TensorFlow & Implementation using
+					fast.ai \\
+					\hline
+					CNN & 90.31\% & 92.66\% \\
+					\hline
+					VGG 15 & 97.38\% & 98.15\% \\
+					\hline
+					ResNet 50 & 97.54\% & 99.00\% \\
+					\hline
+				\end{tabular}
+				\caption{Results in percent of the models implemented}
+			\end{center}
+	\end{table}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Results}
+		\framesubtitle{CNN implemented using fast.ai and tensorflow}
+		\begin{figure}[H]
+			\centering
+			\subfloat[cnn using tensorflow]
+			{\includegraphics[width=0.4\linewidth]
+			{imgs/tf_cnn.png}\label{tf_cnn_cmp}}
+			\hspace{0.5cm}
+			\subfloat[cnn using fast.ai]
+			{\includegraphics[width=0.5\linewidth]
+			{imgs/fastai_cnn.png}\label{fastai_vgg16_cmp}}
+			\caption{CNN implemented in fast.ai and tensorflow}
+			\label{CNN in fast.ai and tensorflow}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Results}
+		\framesubtitle{VGG 16 implemented using fast.ai and tensorflow}
+		\begin{figure}[H]
+			\centering
+			\subfloat[vgg16 using tensorflow]
+			{\includegraphics[width=0.4\linewidth]
+			{imgs/tf_vgg16.png}\label{tf_vgg16}}
+			\hspace{0.5cm}
+			\subfloat[vgg16 using fast.ai]
+			{\includegraphics[width=0.5\linewidth]
+			{imgs/fastai_vgg16.png}\label{fastai_vgg16}}
+			\caption{VGG16 implemented in fast.ai and tensorflow}
+			\label{VGG16 in fast.ai and tensorflow}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Results}
+		\framesubtitle{ResNet 50 implemented using fast.ai and tensorflow}
+		\begin{figure}[H]
+			\centering
+			\subfloat[resnet50 using tensorflow]
+			{\includegraphics[width=0.4\linewidth]
+			{imgs/tf_resnet.png}\label{tf_resnet}}
+			\hspace{0.5cm}
+			\subfloat[resnet50 using fast.ai]
+			{\includegraphics[width=0.5\linewidth]
+			{imgs/fastai_resnet.png}\label{fastai_resnet}}
+			\caption{Resnet 50 implemented in fast.ai and tensorflow}
+			\label{ResNet 50 in fast.ai and tensorflow}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Results}
+		\framesubtitle{Predictions}
+
+		\begin{figure}[H]
+			\centering
+			\subfloat[prediction made by VGG16 implemented in tensorflow]
+			{\includegraphics[width=0.3\linewidth]
+			{imgs/result.png}\label{vgg16_tf}}
+			\hspace{0.3cm}
+			\subfloat[prediction made by ResNet50 implemented in fast.ai]
+			{\includegraphics[width=0.3\linewidth]
+			{imgs/result_fast_ai.png}\label{resnet_fastai}}
+			\caption{Comparing Predictions made by models}
+			\label{fig:Results_Comparison}
+		\end{figure}
+	\end{frame}
+
+	\section{Future Work}
+	\begin{frame}
+		\frametitle{Future Work}
+
+		We further plan on implementing out experiments on other better machine
+		learning model such as \textbf{GAN}
+
+		\vspace{0.5cm}
+
+		A generative adversarial network (GAN) is a class of machine learning
+		frameworks designed by Ian Goodfellow and his colleagues in 2014. Two
+		neural networks contest with each other in a game (in the form of a
+		zero-sum game, where one agent's gain is another agent's loss).
+
+		\vspace{0.5cm}
+
+		We also plan on increasing out dataset for better training results.
+	\end{frame}
+
+	\begin{frame}
+		\centering
+		\textbf{\Huge Thank you}
 	\end{frame}
 \end{document}
