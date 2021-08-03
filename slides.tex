@@ -88,11 +88,9 @@
 	\begin{frame}
 		\frametitle{Methodology}
 
-		\vspace{-2.5cm}
-
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=\linewidth]{imgs/flowchart}
+			\includegraphics[width=0.7\linewidth]{imgs/methodology}
 			\caption{Proposed Methodology}%
 			\label{fig:prop_methodology}
 		\end{figure}
@@ -125,7 +123,7 @@
 
 	\begin{frame}
 		\frametitle{Methodology}
-		\frametitle{Preprocessing}
+		\framesubtitle{Preprocessing}
 
 		Preprocessing is needed as it provides improvement in image data which
 		enhances some of the image features which are important for further
@@ -164,5 +162,191 @@
 			\caption{preprocessing operations}
 			\label{Preprocessing Operations}
 		\end{figure}
+	\end{frame}
+
+	\subsection{Feature Extraction}
+
+	\begin{frame}
+		\frametitle{Methodology}
+		\framesubtitle{Feature Extraction}
+
+		When input to an algorithm is very large and redundant to be processed,
+		it is transformed into reduced representative set of features called
+		feature vector.
+
+		\vspace{1cm}
+
+		These features are extracted using Gray Level Co-occurrence Matrix
+		(GLCM) as it is robust method with high performance.
+	\end{frame}
+
+	\subsection{Classification}
+
+	\begin{frame}
+		\frametitle{Methodology}
+		\framesubtitle{Classification}
+
+		The Machine learning algorithms are used for classification of MR brain
+		image either as normal or abnormal.  The major aim of ML algorithms is
+		to automatically learn and make intelligent decisions.
+
+		\vspace{0.5cm}
+
+		For classification we are using \textbf{CNN}, \textbf{VGG 16} and
+		\textbf{ResNet 50}.
+
+		\vspace{0.5cm}
+
+		For this project we are using binary classification, two classes one for
+		normal and another for abnormal.
+
+	\end{frame}
+
+	\section{Deep learning}
+
+	\begin{frame}
+		\frametitle{Deep Learning}
+		\framesubtitle{Why deep learning?}
+
+		\begin{block}{Image Classification}
+			Image classification is where a computer can analyze an image and
+			identify the ‘class’ the image falls under.
+		\end{block}
+
+		\begin{block}{What is deep learning?}
+			Deep learning is a type of machine learning; a subset of artificial
+			intelligence (AI) that allows machines to learn from data. Deep
+			learning involves the use of computer systems known as neural
+			networks.
+		\end{block}
+
+		\begin{block}{Why use deep learning for image classification}
+			Deep learning allows machines to identify and extract features from
+			images. This means they can learn the features to look for in images
+			by analysing lots of pictures. So, programmers don’t need to enter
+			these filters by hand.
+		\end{block}
+
+	\end{frame}
+
+	\section{Models}
+
+	\begin{frame}
+		\frametitle{Model}
+		\framesubtitle{CNN}
+
+
+		CNN or Convolutional Neural Network a class of artificial neural
+		network, most commonly applied to analyze visual imagery.They are also
+		known as shift invariant or space invariant artificial neural networks
+		(SIANN), based on the shared-weight architecture of the convolution
+		kernels or filters that slide along input features and provide
+		translation equivariant responses known as feature maps.
+
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\linewidth]{imgs/cnn_arch.png}
+			\caption{CNN's architecture}%
+			\label{fig:imgs/cnn_arch}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Model}
+		\framesubtitle{VGG 16}
+
+		VGG 16 is is a significantly more accurate ConvNet architecture, which
+		not only achieve state-of-the-art accuracy on ILSVRC classification and
+		localisation tasks, but are also applicable to other image recognition
+		datasets, where they achieve excellent performance even when used as a
+		part of a relatively simple pipelines (e.g. deep features classified by
+		a linear SVM without fine-tuning).
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/vgg16_arch.png}
+			\caption{VGG 16's architecture}%
+			\label{fig:imgs/vgg16_arch}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Model}
+		\framesubtitle{ResNet 50}
+
+		ResNet50 is a variant of ResNet model which has 48 Convolution layers
+		along with 1 MaxPool and 1 Average Pool layer. It has $3.8 x 10^9$
+		Floating points operations. It is a widely used ResNet model and we have
+		explored ResNet50 architecture in depth.
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\linewidth]{imgs/resnet_arch.png}
+			\caption{Reset's architecture}%
+			\label{fig:imgs/resnet_arch2}
+		\end{figure}
+	\end{frame}
+
+	\section{Implementation}
+
+	\begin{frame}
+		\frametitle{Implementation}
+		\framesubtitle{Assumptions}
+
+		It is assumed that the MRI scans are collected and processed before
+		feeding into the module.
+
+		\vspace{1cm}
+
+		The program is dependent on external modules and are expected to be
+		pre-installed on the system. The modules namely include:
+
+		\vspace{1cm}
+
+		\begin{itemize}
+			\item Tensorflow
+			\item fast.ai
+			\item OpenCV
+			\item matplotlib
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Implementation}
+		\framesubtitle{Implementing}
+
+		\begin{itemize}
+			\item Acquire Data (MRI Scans)
+			\item Dividing the data into two classes while keeping the separate
+				batch for prediction
+			\item Build the models using the aforementioned libraries
+			\item Train the model (feed data into the model)
+			\item Evaluate the trained model on the prediction batch
+		\end{itemize}
+	\end{frame}
+
+	\section{Result}
+
+	\begin{frame}
+		\frametitle{Result}
+		\framesubtitle{Comparing the model accuracies}
+
+		\begin{center}
+			\begin{tabular}{| c | c | c |}
+				\hline
+				Model & Implementation using TensorFlow & Implementation using
+				fast.ai \\
+				\hline
+				CNN & 90.31\% & 92.66\% \\
+				\hline
+			\end{tabular}
+		\end{center}
 	\end{frame}
 \end{document}
