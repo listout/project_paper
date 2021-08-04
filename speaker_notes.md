@@ -51,20 +51,38 @@ image of cnn's architecture
 
 - is cnn model
 - is a pre trained model (imagenet dataset)
+- winner of the 2014 imagenet competition
 - achieved upto $92.7$% accuracy in the imagenet dataset
 - uses 3x3 kernel sized filters
 - was trained on multiple nvidia titan black gpu's
 
 image of vgg 16's architecture
 
+## About the vgg's architecture
+
+In this picture the layers in
+
+- black are convolutional + ReLU layer
+- red are the max pooling layer
+- cyan are the full connected + ReLU layer
+- yellow is the softmax layer.
+
 ## ResNet 50
 
 - another type of cnn model
 - also a pre trained model (imagenet dataset)
+- winner of the 2015 imagenet competition
 - achieved upto 84.4%
 - mainly consists of residual learning blocks
-- resnet 50 contains 50 residual learning blocks (50 means 50 blocks)
+- resnet 50 is nothing but a 50 layer residual learning network.
 
 image of  resnet 50's architecture
+
+## About the resnet's architecture
+
+5th column is for the resnet layer
+
+The ResNet-50 model consists of 5 stages each with a convolution and Identity block
+It has 48 convolutional layers, 1 MaxPool layer and 1 average pool layer
 
 Next slide is implementation by rajarshi
