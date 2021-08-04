@@ -44,6 +44,8 @@ lot of images.
 	activations in the previous layer)
 	- loss layer (how training penalizes the deactivation between the predicted
 	output and the true data label)
+	- Dropout layer (is a technique where randomly selected neurons are ignored during
+	training. They are "dropped-out" randomly.)
 
 image of cnn's architecture
 
